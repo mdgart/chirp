@@ -31,7 +31,11 @@ export const postRouter = createTRPCRouter({
           code: "INTERNAL_SERVER_ERROR",
           message: "Author not found",
         });
-
+      if (!author.username)
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Author not found",
+        });
       return {
         post,
         author,
