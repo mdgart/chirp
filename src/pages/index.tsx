@@ -14,6 +14,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 import Image from "next/image";
+import { LoadingSpinner } from "~/components/loading";
 
 const CreatePostWizard = () => {
   const { user } = useUser();
@@ -69,7 +70,7 @@ const Home: NextPage = () => {
   const { data, isLoading } = api.posts.getAll.useQuery();
 
   if (!data || isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   return (
